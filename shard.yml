@@ -1,0 +1,11 @@
+name: omnivore-http
+version: 0.1.0
+
+authors:
+  - Chris Roberts <code@chrisroberts.org>
+
+development_dependencies:
+  omnivore:
+    path: /home/spox/Projects/spox/omnivore
+
+license: MIT

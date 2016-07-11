@@ -1,0 +1,33 @@
+{
+  "finalizers": {
+    "complete": [
+      "spec"
+    ]
+  },
+  "endpoints": {
+    "tester": {
+      "sources": [
+        {
+          "type": "http"
+          "name": "internal_http",
+          "url": "http://127.0.0.1:9889/fubar",
+          "method": "post"
+        }
+      ],
+      "actions": [
+        "Test"
+      ]
+    },
+    "spec": {
+      "sources": [
+        {
+          "type": "spec",
+          "name": "final"
+        }
+      ],
+      "config": {
+        "force_processing": true
+      }
+    }
+  }
+}
