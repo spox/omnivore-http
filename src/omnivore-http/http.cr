@@ -43,7 +43,8 @@ module Omnivore
         debug ">> #{payload.to_json}"
         response = client.exec(
           config.fetch("method", "get").to_s.upcase,
-          @path.to_s
+          @path.to_s,
+          nil, payload.to_json
         )
         unless(response.status_code == 200)
           error "Transmission of message (`#{msg}`) to source `#{name}` failed with status code: #{response.status_code}"
