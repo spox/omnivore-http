@@ -6,6 +6,6 @@ authors:
 
 development_dependencies:
   omnivore:
-    path: /home/spox/Projects/spox/omnivore
+    github: spox/omnivore
 
 license: MIT
