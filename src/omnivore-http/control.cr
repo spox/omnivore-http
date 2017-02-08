@@ -25,7 +25,7 @@ module Omnivore::Http
         @path = uri.path.to_s
       end
       if(uri.port)
-        @port = uri.port as Int32
+        @port = uri.port.as(Int32)
       elsif(uri.scheme)
         case uri.scheme
         when "http"
@@ -138,7 +138,11 @@ module Omnivore::Http
 
     def format_request(request)
       payload = Smash.new
-      body = request.body ? request.body.to_s : "{}"
+      if(request.body)
+        body = request.body.as(IO).gets_to_end
+      else
+        body = "{}"
+      end
       data = JSON.parse(body).as_h.unsmash
       http_data = {} of String => JSON::Type
       params = {} of String => JSON::Type
@@ -156,8 +160,9 @@ module Omnivore::Http
       data
     end
 
-    class Handler < HTTP::Handler
+    class Handler
 
+      include HTTP::Handler
       include Omnivore::Utils::Logger
 
       getter port : Int32

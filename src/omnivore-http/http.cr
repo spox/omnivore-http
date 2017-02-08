@@ -73,7 +73,7 @@ module Omnivore
         context = request_contexts.delete(msg["id"].to_s)
         if(context)
           debug "Confirming HTTP message `#{msg}`"
-          context = context as HTTP::Server::Context
+          context = context.as(HTTP::Server::Context)
           context.response.status_code = 200
           body = {"message" => "message delivered", "code" => 200, "job_id" => msg["id"]}.to_json
           context.response.content_type = "application/json"
